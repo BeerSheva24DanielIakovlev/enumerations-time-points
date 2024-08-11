@@ -1,20 +1,48 @@
 package telran.time;
 
+import java.util.Arrays;
+
 public class FutureProximityAdjuster implements TimePointAdjuster {
-    private TimePoint[] timePoints;
+    TimePoint[] timePoints;
+
+
     public FutureProximityAdjuster(TimePoint[] timePoints) {
-        //TODO
+            this.timePoints = Arrays.copyOf(timePoints, timePoints.length);
+            Arrays.sort(this.timePoints);
         //copy a given array
         //sort copy and assign to the field timePoints
         //using Java standart Arrays class
         //repeat time points are possible 
     }
 
+    public TimePoint[] getSortedTimePoints() {
+        return timePoints;
+    }
+
     @Override
     public TimePoint adjust(TimePoint timePoint) {
-        //TODO 
         //returns a time point omly in future (greater than a given time point) from the field timePoints 
         //nearest to a given timePoint
-        return null; 
+        int start = 0;
+        int finish = timePoints.length - 1;
+        int res = -1;
+
+        while (start <= finish) {
+            int middle = start + (finish - start) / 2;
+            if (timePoints[middle].compareTo(timePoint) > 0) {
+                res = middle;
+                finish = middle -1;
+            } 
+            else {
+                start = middle +1;
+            }
+        }
+
+        if(res != -1){
+            return timePoints[res];
+        }
+        else{
+            return null;
+        }
     }
 }

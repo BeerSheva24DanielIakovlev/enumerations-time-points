@@ -14,7 +14,6 @@ public class PlusTimePointAdjuster implements TimePointAdjuster {
         TimePoint point = timePoint.convert(timeUnit);
         float amountPoint = point.getAmount() + amount;
         TimePoint pointTemp = new TimePoint(amountPoint, timeUnit);
-        return pointTemp.convert(timePoint.getTimeUnit());    
+        return pointTemp.convert(timePoint.getTimeUnit());
     }
-    
 }
