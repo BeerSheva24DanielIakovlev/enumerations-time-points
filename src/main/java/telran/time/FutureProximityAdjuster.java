@@ -38,11 +38,6 @@ public class FutureProximityAdjuster implements TimePointAdjuster {
             }
         }
 
-        if(res != -1){
-            return timePoints[res];
-        }
-        else{
-            return null;
-        }
+        return res != -1 ? timePoints[res] : null;
     }
 }

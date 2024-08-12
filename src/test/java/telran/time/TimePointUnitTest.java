@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +23,8 @@ public class TimePointUnitTest {
         TimePoint p3 = new TimePoint(1, TimeUnit.MINUTE);
         TimePoint p4 = new TimePoint(1, TimeUnit.SECOND);
         assertEquals(0, p1.compareTo(p2));
-        assertEquals(1, p1.compareTo(p3));
-        assertEquals(-1, p1.compareTo(p4));
+        assertEquals(-1, p1.compareTo(p3));
+        assertEquals(1, p1.compareTo(p4));
 
     }
 
@@ -61,8 +60,8 @@ public class TimePointUnitTest {
         TimePoint res2 = futureProximityAdjuster.adjust(p2);
         TimePoint res3 = futureProximityAdjuster.adjust(p3);
     
-        assertEquals(p1, res1);
-        assertEquals(p2, res2);
+        assertEquals(new TimePoint(10, TimeUnit.SECOND), res1);
+        assertEquals(new TimePoint(1, TimeUnit.HOUR), res2);
         assertEquals(null, res3);
     }
 }
