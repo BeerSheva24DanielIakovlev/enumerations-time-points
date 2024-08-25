@@ -38,7 +38,7 @@ public class TimePoint implements Comparable<TimePoint> {
     }
 
     public TimePoint convert(TimeUnit timeUnit) {
-        //TODO
+        //TOD
         //returns new TimePoint object to use "this" object but with a given timeUnit
         float currentAmountToSecond = amount * this.timeUnit.getValueOfSeconds();
         float newAmount = currentAmountToSecond / timeUnit.getValueOfSeconds();
